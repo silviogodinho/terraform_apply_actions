@@ -1,6 +1,6 @@
 module "dynamo" {
 
-  source = "git::https://github.com/platformbuilders/builders-aws-dynamo-terraform-module.git"
+  source = "./module-dynamo"
 
   name           = "access_manager_test"
   hash_key       = "test"
