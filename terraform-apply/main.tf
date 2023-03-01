@@ -1,8 +1,8 @@
 module "dynamo" {
 
-  source = "./module-dynamo"
-
-  name           = "access_manager_test"
+  source = "github.com/platformbuilders/builders-aws-dynamo-terraform-module.git"
+""
+  name           = "access_manager_test-1"
   hash_key       = "test"
   read_capacity  = 20
   write_capacity = 20
