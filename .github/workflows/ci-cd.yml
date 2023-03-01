@@ -1,9 +1,9 @@
 name: ci-cd
 
-on: 
-  pull_request:
-    paths:
-      - 'terraform-apply'
+on:
+  push:
+    branches:
+      - test-actions
       
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
