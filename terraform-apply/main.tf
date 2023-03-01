@@ -21,24 +21,24 @@ module "kms" {
 
 }
 
-data "archive_file""zip_the_python_code"{
-  type = "zip"
-  source_dir = "${path.module}/python-test/"
+data "archive_file" "zip_the_python_code" {
+  type        = "zip"
+  source_dir  = "${path.module}/python-test/"
   output_path = "${path.module}/python-test/hello-python.zip"
 }
 
 module "lambda_funciton" {
-  source = "git::git@github.com:platformbuilders/builders-aws-lambda-terraform-module.git"
-  filename      = "${path.module}/python-test/hello-python.zip" 
+  source        = "git::git@github.com:platformbuilders/builders-aws-lambda-terraform-module.git"
+  filename      = "${path.module}/python-test/hello-python.zip"
   function_name = "lambda-test"
   # function_description   = "função lambda teste"
-  handler       = "hello-python.lambda_handler"
-  runtime       = "python3.9"
+  handler = "hello-python.lambda_handler"
+  runtime = "python3.9"
   # sqs_arn = aws_sqs_queue.sqs.arn
-  api_name = "apigw-test"
+  api_name                    = "apigw-test"
   api_integration_http_method = "POST"
-  api_auth = "NONE"
-  environment = "development"
+  api_auth                    = "NONE"
+  environment                 = "development"
 }
 
 module "sqs" {
@@ -51,7 +51,7 @@ module "sqs" {
   message_retention_seconds = 86400
   receive_wait_time_seconds = 10
   env                       = "development"
-  function_name = "lambda-test"
+  function_name             = "lambda-test"
 
 }
 
